@@ -1,4 +1,4 @@
-module github.com/raver119/zonedns/api
+module github.com/raver119/zonedns-go-api
 
 go 1.13
 
