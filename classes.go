@@ -26,6 +26,10 @@ func (d *Domain) ChangeZone(zone Zone) {
 	d.ZoneID = zone.id
 }
 
+func (z *Zone) Id() int64 {
+	return z.id
+}
+
 func validateIPv4(v IPv4) bool {
 	return net.ParseIP(string(v)) != nil
 }
