@@ -29,6 +29,9 @@ func validateIPv6(v IPv6) bool {
 	return net.ParseIP(string(v)) != nil
 }
 
+/*
+	This function creates new Domain instance within given Zone
+*/
 func NewDomain(domain string, zone Zone) Domain {
 	return Domain{
 		Name:   domain,
