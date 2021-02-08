@@ -145,16 +145,16 @@ func (m MySqlStorage) UpdateZone(zone Zone) (z Zone, err error) {
 		return Zone{}, err
 	}
 
-	_, err = m.db.Exec("UPDATE ZNS_zones SET z_name=?, z_a=?, z_aaaa=? WHERE z_id=?", zone.Name, a, aaaa, zone.id)
+	_, err = m.db.Exec("UPDATE ZNS_zones SET z_name=?, z_a=?, z_aaaa=? WHERE z_id=?", zone.Name, a, aaaa, zone.Id)
 	if err != nil {
 		return Zone{}, err
 	}
 
-	return m.r.fetchZoneById(zone.id)
+	return m.r.fetchZoneById(zone.Id)
 }
 
 func (m MySqlStorage) DeleteZone(zone Zone) (err error) {
-	return m.DeleteZoneById(zone.id)
+	return m.DeleteZoneById(zone.Id)
 }
 
 func (m MySqlStorage) DeleteZoneById(zoneId int64) (err error) {
@@ -200,19 +200,19 @@ func (m MySqlStorage) AddDomain(domain Domain) (d Domain, err error) {
 	This method updates specified domain in the database.
 */
 func (m MySqlStorage) UpdateDomain(d Domain) (dom Domain, err error) {
-	_, err = m.db.Exec("UPDATE ZNS_domains SET d_zid=?, d_name=?, d_txt=? WHERE d_id=? LIMIT 1", d.ZoneID, d.Name, d.Txt, d.id)
+	_, err = m.db.Exec("UPDATE ZNS_domains SET d_zid=?, d_name=?, d_txt=? WHERE d_id=? LIMIT 1", d.ZoneID, d.Name, d.Txt, d.Id)
 	if err != nil {
 		return Domain{}, err
 	}
 
-	return m.r.fetchDomainById(d.id)
+	return m.r.fetchDomainById(d.Id)
 }
 
 /*
 	This method allows to delete specified domain from the database
 */
 func (m MySqlStorage) DeleteDomain(domain Domain) (err error) {
-	return m.DeleteDomainById(domain.id)
+	return m.DeleteDomainById(domain.Id)
 }
 
 /*

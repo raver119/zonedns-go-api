@@ -6,28 +6,24 @@ type IPv4 string
 type IPv6 string
 
 type Zone struct {
-	id   int64
-	Name string
-	A    []IPv4
-	AAAA []IPv6
+	Id   int64  `json:"Id"`
+	Name string `json:"name"`
+	A    []IPv4 `json:"a"`
+	AAAA []IPv6 `json:"aaaa"`
 }
 
 type Domain struct {
-	id     int64
-	Name   string
-	ZoneID int64
-	Txt    string
+	Id     int64  `json:"id"`
+	Name   string `json:"name"`
+	ZoneID int64  `json:"zoneId"`
+	Txt    string `json:"txt"`
 }
 
 /*
 	This method allows to "move" domain to another zone
 */
 func (d *Domain) ChangeZone(zone Zone) {
-	d.ZoneID = zone.id
-}
-
-func (z *Zone) Id() int64 {
-	return z.id
+	d.ZoneID = zone.Id
 }
 
 func validateIPv4(v IPv4) bool {
@@ -43,7 +39,7 @@ func validateIPv6(v IPv6) bool {
 */
 func NewZone(id int64, name string, a []IPv4, aaaa []IPv6) Zone {
 	return Zone{
-		id:   id,
+		Id:   id,
 		Name: name,
 		A:    a,
 		AAAA: aaaa,
@@ -55,7 +51,7 @@ func NewZone(id int64, name string, a []IPv4, aaaa []IPv6) Zone {
 */
 func NewZone4(id int64, name string, a []IPv4) Zone {
 	return Zone{
-		id:   id,
+		Id:   id,
 		Name: name,
 		A:    a,
 	}
@@ -66,7 +62,7 @@ func NewZone4(id int64, name string, a []IPv4) Zone {
 */
 func NewZone6(id int64, name string, aaaa []IPv6) Zone {
 	return Zone{
-		id:   id,
+		Id:   id,
 		Name: name,
 		AAAA: aaaa,
 	}
@@ -78,7 +74,7 @@ func NewZone6(id int64, name string, aaaa []IPv6) Zone {
 func NewDomain(domain string, zone Zone) Domain {
 	return Domain{
 		Name:   domain,
-		ZoneID: zone.id,
+		ZoneID: zone.Id,
 		Txt:    "",
 	}
 }

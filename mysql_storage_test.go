@@ -24,7 +24,7 @@ func TestMySqlStorage_Test_Zone_CRUD(t *testing.T) {
 		t.Error(err)
 	}
 
-	zoneA.id = z1.id
+	zoneA.Id = z1.Id
 	if !reflect.DeepEqual(zoneA, z1) {
 		t.Errorf("expected: %v;\nreceived: %v", zoneA, z1)
 	}
@@ -79,7 +79,7 @@ func TestMySqlStorage_Test_Domain_CRUD(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	domain.id = d.id
+	domain.Id = d.Id
 	if !reflect.DeepEqual(domain, d) {
 		t.Errorf("expected: %v;\nreceived: %v", domain, d)
 	}
