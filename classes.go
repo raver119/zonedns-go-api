@@ -6,7 +6,7 @@ type IPv4 string
 type IPv6 string
 
 type Zone struct {
-	Id   int64  `json:"Id"`
+	Id   int64  `json:"id"`
 	Name string `json:"name"`
 	A    []IPv4 `json:"a"`
 	AAAA []IPv6 `json:"aaaa"`
